@@ -4,4 +4,7 @@
     <!-- Strings used for fragments for navigation -->
     <string name="start">Start</string>
     <string name="login">Login</string>
+    <string name="password">Password:</string>
+    <string name="email">Email:</string>
+    <string name="login_screen">LOGIN</string>
 </resources>

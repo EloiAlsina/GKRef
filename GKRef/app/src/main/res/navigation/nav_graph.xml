@@ -3,34 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/HomeFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="cat.itb.gkref.FirstFragment"
-        tools:layout="@layout/fragment_first">
+        android:id="@+id/HomeFragment"
+        android:name="cat.itb.gkref.HomeFragment"
+        tools:layout="@layout/fragment_home">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/SecondFragment"
-        android:name="cat.itb.gkref.SecondFragment"
-        tools:layout="@layout/fragment_second">
-
-        <action
-            android:id="@+id/action_SecondFragment_to_LoginFragment"
-            app:destination="@id/LoginFragment" />
+            android:id="@+id/action_HomeFragment_to_TransitionFragment"
+            app:destination="@id/TransitionFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/LoginFragment"
-        android:name="cat.itb.gkref.LoginFragment"
-        tools:layout="@layout/fragment_login">
+        android:id="@+id/TransitionFragment"
+        android:name="cat.itb.gkref.TransitionFragment"
+        tools:layout="@layout/fragment_transition">
+    </fragment>
 
-        <action
-            android:id="@+id/action_SecondFragment_to_LoginFragment"
-            app:destination="@id/LoginFragment" />
+    <fragment
+        android:id="@+id/MainFragment"
+        android:name="cat.itb.gkref.MainFragment"
+        tools:layout="@layout/fragment_main">
     </fragment>
 </navigation>

@@ -4,24 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SecondFragment">
+    tools:context=".HomeFragment">
+
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/loginscreen"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="57dp"
-        tools:layout_editor_absoluteY="0dp" />
+        android:background="@drawable/launcherapp"/>
 
     <Button
-        android:id="@+id/login"
-        android:layout_width="180sp"
+        android:id="@+id/start"
+        android:layout_width="150sp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="56dp"
-        android:text="@string/login"
+        android:layout_marginBottom="132dp"
+        android:text="@string/start"
         app:backgroundTint="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
