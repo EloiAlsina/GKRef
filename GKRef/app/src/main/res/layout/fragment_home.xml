@@ -17,7 +17,7 @@
         android:id="@+id/start"
         android:layout_width="150sp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="132dp"
+        android:layout_marginBottom="144dp"
         android:text="@string/start"
         app:backgroundTint="#000000"
         app:layout_constraintBottom_toBottomOf="parent"

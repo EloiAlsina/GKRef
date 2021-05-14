@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GKRef">
         <activity
-            android:name=".Activities.MainActivity"
+            android:name=".Activities.LaunchActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.GKRef.NoActionBar">
             <intent-filter>
@@ -20,14 +20,31 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".Activities.MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.GKRef.NoActionBar">
+        </activity>
+        <activity
             android:name=".Activities.LoginActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.GKRef.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        </activity>
+        <activity
+            android:name=".Activities.HomeActivity"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.GKRef.NoActionBar">
+        </activity>
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        <activity
+            android:name=".Activities.MenuActivity"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.GKRef.NoActionBar">
+        </activity>
+
+        <activity
+            android:name=".Activities.ActActivity"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.GKRef.NoActionBar">
         </activity>
     </application>
 

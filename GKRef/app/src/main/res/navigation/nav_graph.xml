@@ -23,7 +23,7 @@
 
     <fragment
         android:id="@+id/MainFragment"
-        android:name="cat.itb.gkref.MainFragment"
-        tools:layout="@layout/fragment_main">
+        android:name="cat.itb.gkref.StartFragment"
+        tools:layout="@layout/fragment_menu">
     </fragment>
 </navigation>

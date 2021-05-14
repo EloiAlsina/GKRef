@@ -6,15 +6,16 @@
     android:background="@color/white"
     tools:context=".Activities.LaunchActivity">
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <ImageView
         android:id="@+id/splash_backgroundImage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/launcherapp">
 
-    </androidx.appcompat.widget.AppCompatImageView>
+    </ImageView>
 
     <TextView
+        android:id="@+id/by"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="By Eloi Alsina i Blanch"

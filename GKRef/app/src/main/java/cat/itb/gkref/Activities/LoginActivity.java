@@ -1,12 +1,11 @@
 package cat.itb.gkref.Activities;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
+import android.view.Menu;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -20,13 +19,15 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 import cat.itb.gkref.R;
+import cat.itb.gkref.TransitionFragment;
 
 public class LoginActivity extends AppCompatActivity {
     TextInputEditText email, password;
     FirebaseAuth firebaseAuth;
-    MaterialButton login_button;
-    private static final String TAG = "LoginActivity";
+    MaterialButton login_button, start;
+    private Runnable runnable;
 
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,18 +36,20 @@ public class LoginActivity extends AppCompatActivity {
         email = findViewById(R.id.email_editText);
         password = findViewById(R.id.password_editText);
         login_button = findViewById(R.id.login_button);
+        start=findViewById(R.id.start);
+
         autentification();
 
         login_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 sigInUser();
-                Log.i(TAG, "Fa clic");
-
+                Intent intent = new Intent(LoginActivity.this, TransitionFragment.class);
+                startActivity(intent);
             }
         });
-
     }
+
     private void autentification() {
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -60,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
                             .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                                 @Override
                                 public void onSuccess(AuthResult authResult) {
-                                    Intent i = new Intent(LoginActivity.this, HomeActivity.class);
+                                    Intent i = new Intent(LoginActivity.this, MenuActivity.class);
                                     startActivity(i);
                                     finish();
                                 }
