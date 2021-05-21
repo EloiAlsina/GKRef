@@ -14,8 +14,10 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         Runnable runnable = () -> {
@@ -24,6 +26,6 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         };
-        new Handler().postDelayed(runnable,5000);
+        new Handler().postDelayed(runnable,5);
     }
 }

@@ -4,12 +4,15 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.transition.Transition;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
-
+import cat.itb.gkref.TransitionFragment.*;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentActivity;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -24,10 +27,10 @@ import cat.itb.gkref.TransitionFragment;
 public class LoginActivity extends AppCompatActivity {
     TextInputEditText email, password;
     FirebaseAuth firebaseAuth;
-    MaterialButton login_button, start;
-    private Runnable runnable;
+    MaterialButton login_button;
+    public Button login, start, logout;
 
-    @SuppressLint("WrongViewCast")
+    @SuppressLint({"WrongViewCast", "CutPasteId"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +39,10 @@ public class LoginActivity extends AppCompatActivity {
         email = findViewById(R.id.email_editText);
         password = findViewById(R.id.password_editText);
         login_button = findViewById(R.id.login_button);
+        login=findViewById(R.id.login);
+        logout=findViewById(R.id.logout);
         start=findViewById(R.id.start);
+
 
         autentification();
 
@@ -44,8 +50,6 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 sigInUser();
-                Intent intent = new Intent(LoginActivity.this, TransitionFragment.class);
-                startActivity(intent);
             }
         });
     }
@@ -64,6 +68,9 @@ public class LoginActivity extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(AuthResult authResult) {
                                     Intent i = new Intent(LoginActivity.this, MenuActivity.class);
+                                    TransitionFragment.login.setVisibility(View.INVISIBLE);
+                                    TransitionFragment.logout.setVisibility(View.VISIBLE);
+                                    TransitionFragment.start.setVisibility(View.VISIBLE);
                                     startActivity(i);
                                     finish();
                                 }
@@ -75,9 +82,7 @@ public class LoginActivity extends AppCompatActivity {
                     });
                 }
             }
-            else {
-                Toast.makeText(LoginActivity.this,"Please fill all the fields",Toast.LENGTH_SHORT).show();
-            }
+            else Toast.makeText(LoginActivity.this,"Please fill all the fields",Toast.LENGTH_SHORT).show();
         }catch (Exception e){
             Toast.makeText(this,e.getMessage(),Toast.LENGTH_LONG).show();
         }

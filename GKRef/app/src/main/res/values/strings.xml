@@ -9,4 +9,11 @@
     <string name="login_screen">LOGIN</string>
     <string name="logout">logout</string>
     <string name="menu">Menu</string>
+    <string name="main_menu">Main Menu</string>
+    <string name="new_act">New Act</string>
+    <string name="history">History</string>
+    <string name="next">next</string>
+    <string name="date">Date:</string>
+    <string name="location">Location:</string>
+    <string name="time">Time:</string>
 </resources>

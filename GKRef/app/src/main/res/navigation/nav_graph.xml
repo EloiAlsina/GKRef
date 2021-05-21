@@ -24,6 +24,6 @@
     <fragment
         android:id="@+id/MainFragment"
         android:name="cat.itb.gkref.StartFragment"
-        tools:layout="@layout/fragment_menu">
+        tools:layout="@layout/activity_main">
     </fragment>
 </navigation>

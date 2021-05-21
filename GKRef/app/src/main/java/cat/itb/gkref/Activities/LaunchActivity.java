@@ -37,6 +37,6 @@ public class LaunchActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         };
-        new Handler().postDelayed(runnable,5000);
+        new Handler().postDelayed(runnable,5);
     }
 }

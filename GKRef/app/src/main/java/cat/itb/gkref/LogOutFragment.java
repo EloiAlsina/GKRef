@@ -33,6 +33,4 @@ public class LogOutFragment extends Fragment {
         getActivity().onBackPressed();
         return v;
     }
-
-
 }
