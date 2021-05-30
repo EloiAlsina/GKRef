@@ -2,12 +2,12 @@
     <!-- Base application theme. -->
     <style name="Theme.GKRef" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/dark_BG</item>
+        <item name="colorPrimary">@color/bright_BG</item>
         <item name="colorPrimaryVariant">@color/main</item>
-        <item name="colorOnPrimary">@color/bright_BG</item>
+        <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/bright_BG</item>
-        <item name="colorSecondaryVariant">@color/dark_BG</item>
+        <item name="colorSecondaryVariant">@color/higlight</item>
         <item name="colorOnSecondary">@color/white</item>
         <item name="background">@color/dark_BG</item>
 

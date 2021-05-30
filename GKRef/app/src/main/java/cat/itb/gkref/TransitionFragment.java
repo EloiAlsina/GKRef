@@ -1,5 +1,6 @@
 package cat.itb.gkref;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -23,6 +24,7 @@ import cat.itb.gkref.Activities.MenuActivity;
 
 public class TransitionFragment extends Fragment {
 
+    @SuppressLint("StaticFieldLeak")
     public static Button login, start, logout;
     private static final int RC_SIGN_IN = 123;
     FirebaseAuth firebaseAuth;
@@ -47,12 +49,12 @@ public class TransitionFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if(email==null) {
-                    Intent intent = new Intent(getActivity(), LoginActivity.class);
-                    startActivity(intent);
+                    Intent i = new Intent(getActivity(), LoginActivity.class);
+                    startActivity(i);
                 }
                 else {
-                    Intent intent = new Intent(getActivity(), MenuActivity.class);
-                startActivity(intent);
+                    Intent i = new Intent(getActivity(), MenuActivity.class);
+                startActivity(i);
                 }
             }
         });
@@ -74,4 +76,6 @@ public class TransitionFragment extends Fragment {
         });
         return root;
     }
+
+
 }

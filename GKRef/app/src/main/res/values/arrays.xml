@@ -1,4 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="teams">teams</string-array>
+    <string-array name="league">teams
+        <item>League:</item>
+        <item>Asobal</item>
+        <item>DDH</item>
+        <item>EHF</item>
+    </string-array>
+
+    <string-array name="gender">teams
+        <item>Gender:</item>
+        <item>Male</item>
+        <item>Female</item>
+        <item>Mixed</item>
+    </string-array>
+
+    <string-array name="category">teams
+        <item>Category:</item>
+        <item>Senior</item>
+        <item>Infant</item>
+        <item>Veteran</item>
+    </string-array>
+
 </resources>

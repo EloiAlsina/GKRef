@@ -19,6 +19,10 @@ protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
+    TransitionFragment.login.setVisibility(View.INVISIBLE);
+    TransitionFragment.logout.setVisibility(View.VISIBLE);
+    TransitionFragment.start.setVisibility(View.VISIBLE);
+
     newact=findViewById(R.id.newact);
     history=findViewById(R.id.history);
 
@@ -33,16 +37,15 @@ protected void onCreate(Bundle savedInstanceState) {
 }
 
     @Override
-    public void onBackPressed()
-    {
-        super.onBackPressed();
-        Runnable runnable = () -> {
-            Intent i = new Intent(MenuActivity.this, TransitionFragment.class);
-            startActivity(i);
-            finish();
-        };
-        new Handler().postDelayed(runnable,5);
+    public void onBackPressed() {
 
+        int count = getFragmentManager().getBackStackEntryCount();
+
+        if (count == 0) {
+            super.onBackPressed();
+            getFragmentManager().popBackStack();
+        } else {
+            getFragmentManager().popBackStack();
+        }
     }
-
 }

@@ -68,9 +68,6 @@ public class LoginActivity extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(AuthResult authResult) {
                                     Intent i = new Intent(LoginActivity.this, MenuActivity.class);
-                                    TransitionFragment.login.setVisibility(View.INVISIBLE);
-                                    TransitionFragment.logout.setVisibility(View.VISIBLE);
-                                    TransitionFragment.start.setVisibility(View.VISIBLE);
                                     startActivity(i);
                                     finish();
                                 }

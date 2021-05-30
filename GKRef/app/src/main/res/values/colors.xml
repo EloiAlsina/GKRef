@@ -6,4 +6,7 @@
     <color name="dark_BG">#2F2440</color>
     <color name="higlight">#FF2511</color>
     <color name="main">#BA0F30</color>
+    <color name="yellow">#FFFF00</color>
+    <color name="red">#FF0000</color>
+    <color name="blue">#0000FF</color>
 </resources>

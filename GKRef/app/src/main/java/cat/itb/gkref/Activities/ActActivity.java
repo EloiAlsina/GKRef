@@ -6,96 +6,123 @@ import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Selection;
+import android.text.format.DateFormat;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.TimePicker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.datepicker.MaterialDatePicker;
+import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
+import com.google.android.material.timepicker.MaterialTimePicker;
+import com.google.firebase.database.DatabaseReference;
+
+import java.sql.Time;
 import java.util.Calendar;
+import java.util.Locale;
 
 import cat.itb.gkref.R;
 
 ;
 
-public class ActActivity extends AppCompatActivity implements View.OnClickListener {
+public class ActActivity extends AppCompatActivity {
 
-    private static final String zero = "0";
-    private static final String bar = "/";
-    private static final String points = ":";
+    private Button mPickTimeButton, next;
+    private int tHour, tMinute;
+    private TextView mShowSelectedDateText, mShowSelectedTimeText;
+    private Spinner category, league, gender;
 
-    public final Calendar c = Calendar.getInstance();
-
-    final int hour = c.get(Calendar.HOUR_OF_DAY);
-    final int minute = c.get(Calendar.MINUTE);
-
-    final int month = c.get(Calendar.MONTH);
-    final int day = c.get(Calendar.DAY_OF_MONTH);
-    final int year = c.get(Calendar.YEAR);
-
-    //Widgets
-    EditText etDate, etTime;
-    ImageButton ibGetTime, ibGetDate;
-
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_act);
-        ibGetTime = (ImageButton) findViewById(R.id.ib_get_time);
-        ibGetTime.setOnClickListener(this);
 
-        etTime = (EditText) findViewById(R.id.et_show_time_picker);
-        category=findViewById(R.id.category);
-        gender=findViewById(R.id.gender);
-        league=findViewById(R.id.league);
-    }
+        category = findViewById(R.id.category);
+        league = findViewById(R.id.league);
+        gender = findViewById(R.id.gender);
 
-    private void getDate(){
-        DatePickerDialog takeDate = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-            @SuppressLint("SetTextI18n")
+        next =findViewById(R.id.next);
+        Button mPickDateButton = findViewById(R.id.pick_date_button);
+        mPickTimeButton=findViewById(R.id.pick_time_button);
+        mShowSelectedDateText = findViewById(R.id.show_selected_date);
+        mShowSelectedTimeText = findViewById(R.id.show_selected_time);
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.league, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        league.setAdapter(adapter);
+
+        adapter = ArrayAdapter.createFromResource(this, R.array.category, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        category.setAdapter(adapter);
+
+        adapter = ArrayAdapter.createFromResource(this, R.array.gender, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        gender.setAdapter(adapter);
+
+        MaterialDatePicker.Builder materialDateBuilder = MaterialDatePicker.Builder.datePicker();
+
+        materialDateBuilder.setTitleText("SELECT A DATE");
+
+        final MaterialDatePicker materialDatePicker = materialDateBuilder.build();
+
+        mPickDateButton.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        materialDatePicker.show(getSupportFragmentManager(), "MATERIAL_DATE_PICKER");
+                    }
+                });
+
+        materialDatePicker.addOnPositiveButtonClickListener(
+                selection -> {
+
+                    mShowSelectedDateText.setText( materialDatePicker.getHeaderText());
+                });
+
+        mPickTimeButton.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        popTimePicker(v);
+                    }
+    });
+
+        next.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                final int monthActual = month + 1;
-                String dayFormat = (dayOfMonth < 10)? zero + String.valueOf(dayOfMonth):String.valueOf(dayOfMonth);
-                String monthFormat = (monthActual < 10)? zero + String.valueOf(monthActual):String.valueOf(monthActual);
-                etDate.setText(dayFormat + bar + monthFormat + bar + year);
-
-
+            public void onClick(View v) {
+                Intent i = new Intent(ActActivity.this, TeamsActivity.class);
+                startActivity(i);
+                finish();
             }
-        },year, month, day);
-        takeDate.show();
-
+        });
     }
 
-    private void getTime(){
-        TimePickerDialog recogerHora = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
-            @SuppressLint("SetTextI18n")
+    @SuppressLint("SetTextI18n")
+    private void popTimePicker(View view){
+        TimePickerDialog.OnTimeSetListener onTimeSetListener=new TimePickerDialog.OnTimeSetListener() {
+            @SuppressLint("DefaultLocale")
             @Override
-            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                String hourFormat =  (hourOfDay < 10)? String.valueOf(zero + hourOfDay) : String.valueOf(hourOfDay);
-                String minuteFormat = (minute < 10)? String.valueOf(zero + minute):String.valueOf(minute);
-                String AM_PM;
-                if(hourOfDay < 12) {
-                    AM_PM = "a.m.";
-                } else {
-                    AM_PM = "p.m.";
-                }
-                etTime.setText(hourFormat + points + minuteFormat + " " + AM_PM);
-            }
-        }, hour, minute, false);
+            public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                tHour=selectedHour;
+                tMinute=selectedMinute;
+                boolean isPM = (tHour >= 12);
 
-        recogerHora.show();
+                mShowSelectedTimeText.setText(String.format("%02d:%02d %s", (tHour == 12 || tHour == 0) ? 12 : tHour % 12, tMinute, isPM ? "PM" : "AM"));            }
+        };
+
+        TimePickerDialog timePickerDialog = new TimePickerDialog(this, onTimeSetListener, tHour, tMinute, false );
+        timePickerDialog.setTitle("Select Time: ");
+        timePickerDialog.show();
     }
-
-
-    Spinner category, gender, league;
-    Button next;
-    EditText location;
-
 
     @Override
     public void onBackPressed()
@@ -110,8 +137,4 @@ public class ActActivity extends AppCompatActivity implements View.OnClickListen
 
     }
 
-    @Override
-    public void onClick(View v) {
-
-    }
 }
