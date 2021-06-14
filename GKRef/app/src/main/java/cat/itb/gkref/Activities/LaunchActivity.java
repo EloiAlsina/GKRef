@@ -33,7 +33,6 @@ public class LaunchActivity extends AppCompatActivity {
 
         Runnable runnable = () -> {
             Intent intent = new Intent(LaunchActivity.this, MainActivity.class);
-            intent.putExtra("Start",true);
             startActivity(intent);
             finish();
         };

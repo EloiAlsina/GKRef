@@ -22,73 +22,49 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activities.MainActivity"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.GKRef.NoActionBar">
-        </activity>
-        <activity
             android:name=".Activities.LoginActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.GKRef.NoActionBar">
         </activity>
+
         <activity
-            android:name=".Activities.HomeActivity"
+            android:name=".Activities.TeamsFragment"
             android:label="@string/app_name"
             android:theme="@style/Theme.GKRef.NoActionBar">
         </activity>
 
         <activity
-            android:name=".Activities.MenuActivity"
+            android:name=".Activities.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.GKRef.NoActionBar">
         </activity>
 
         <activity
-            android:name=".Activities.ActActivity"
+            android:name="MenuFragment"
             android:label="@string/app_name"
-            android:theme="@style/Theme.GKRef.NoActionBar">
+            android:theme="@style/Theme.GKRef.NoActionBar"
+            tools:ignore="Instantiatable">
         </activity>
 
         <activity
-            android:name=".Activities.TeamsActivity"
+            android:name="HomeFragment"
             android:label="@string/app_name"
-            android:theme="@style/Theme.GKRef.NoActionBar">
+            android:theme="@style/Theme.GKRef.NoActionBar"
+            tools:ignore="Instantiatable">
         </activity>
 
         <activity
-            android:name=".Activities.GameActivity"
+            android:name="FinalActivity"
             android:label="@string/app_name"
-            android:theme="@style/Theme.GKRef.NoActionBar">
+            android:theme="@style/Theme.GKRef.NoActionBar"
+            tools:ignore="Instantiatable">
         </activity>
 
         <activity
-            android:name=".Activities.Part4Activity"
+            android:name=".FragmentRef"
             android:label="@string/app_name"
-            android:theme="@style/Theme.GKRef.NoActionBar">
-        </activity>
-
-        <activity
-            android:name=".Activities.Part3Activity"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.GKRef.NoActionBar">
-        </activity>
-
-        <activity
-            android:name=".Activities.Part2Activity"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.GKRef.NoActionBar">
-        </activity>
-
-        <activity
-            android:name=".Activities.Part1Activity"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.GKRef.NoActionBar">
-        </activity>
-
-        <activity
-            android:name=".Activities.FinalActivity"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.GKRef.NoActionBar">
+            android:theme="@style/Theme.GKRef.NoActionBar"
+            tools:ignore="Instantiatable">
         </activity>
 
         <activity

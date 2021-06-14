@@ -3,16 +3,12 @@ package cat.itb.gkref.Activities;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.transition.Transition;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-import cat.itb.gkref.TransitionFragment.*;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentActivity;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -21,8 +17,8 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import cat.itb.gkref.MenuFragment;
 import cat.itb.gkref.R;
-import cat.itb.gkref.TransitionFragment;
 
 public class LoginActivity extends AppCompatActivity {
     TextInputEditText email, password;
@@ -67,9 +63,7 @@ public class LoginActivity extends AppCompatActivity {
                             .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                                 @Override
                                 public void onSuccess(AuthResult authResult) {
-                                    Intent i = new Intent(LoginActivity.this, MenuActivity.class);
-                                    startActivity(i);
-                                    finish();
+                                    setContentView(R.layout.activity_menu);
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                         @Override

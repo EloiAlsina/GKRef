@@ -3,12 +3,63 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/TransitionFragment">
+    app:startDestination="@id/HomeFragment">
+
+    <fragment
+        android:id="@+id/HomeFragment"
+        android:name="cat.itb.gkref.HomeFragment"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_HomeFragment_to_TransitionFragment"
+            app:destination="@id/TransitionFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/TransitionFragment"
         android:name="cat.itb.gkref.TransitionFragment"
         tools:layout="@layout/fragment_transition">
+        <action
+            android:id="@+id/action_TransitionFragment_to_MenuFragment"
+            app:destination="@id/MenuFragment" />
     </fragment>
 
+
+    <fragment
+        android:id="@+id/MenuFragment"
+        android:name="cat.itb.gkref.MenuFragment"
+        tools:layout="@layout/fragment_menu">
+        <action
+            android:id="@+id/action_MenuFragment_to_ActFramgent"
+            app:destination="@id/ActFramgent" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/ActFramgent"
+        android:name="cat.itb.gkref.TransitionFragment"
+        tools:layout="@layout/fragment_transition">
+    </fragment>
+
+    <fragment
+        android:id="@+id/part1"
+        android:name="cat.itb.gkref.Part1"
+        tools:layout="@layout/fragment_transition">
+    </fragment>
+
+    <fragment
+        android:id="@+id/part2"
+        android:name="cat.itb.gkref.Part2"
+        tools:layout="@layout/fragment_transition">
+    </fragment>
+
+    <fragment
+        android:id="@+id/part3"
+        android:name="cat.itb.gkref.Part3"
+        tools:layout="@layout/fragment_transition">
+    </fragment>
+
+    <fragment
+        android:id="@+id/part4"
+        android:name="cat.itb.gkref.Part4"
+        tools:layout="@layout/fragment_transition">
+    </fragment>
 </navigation>

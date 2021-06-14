@@ -41,4 +41,7 @@
     <string name="end_match">End Match</string>
     <string name="result">Game result:</string>
     <string name="finalpart">Final</string>
+    <string name="info">Info</string>
+    <string name="players_name" />
+    <string name="profile">Profile</string>
 </resources>

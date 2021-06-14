@@ -4,23 +4,20 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.ui.AppBarConfiguration;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import cat.itb.gkref.Activities.LoginActivity;
 import cat.itb.gkref.Activities.MainActivity;
-import cat.itb.gkref.Activities.MenuActivity;
+import cat.itb.gkref.Activities.LoginActivity;
 
 public class TransitionFragment extends Fragment {
 
@@ -53,7 +50,7 @@ public class TransitionFragment extends Fragment {
                     startActivity(i);
                 }
                 else {
-                    Intent i = new Intent(getActivity(), MenuActivity.class);
+                    Intent i = new Intent(getActivity(), MenuFragment.class);
                 startActivity(i);
                 }
             }
@@ -62,7 +59,7 @@ public class TransitionFragment extends Fragment {
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity(), MenuActivity.class);
+                Intent i = new Intent(getActivity(), MenuFragment.class);
                 startActivity(i);
             }
         });
@@ -76,6 +73,5 @@ public class TransitionFragment extends Fragment {
         });
         return root;
     }
-
 
 }
