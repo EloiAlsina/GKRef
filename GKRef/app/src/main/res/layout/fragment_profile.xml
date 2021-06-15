@@ -7,4 +7,62 @@
     android:layout_height="match_parent"
     tools:context=".FragmentRef">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/fons"
+        android:cropToPadding="true"
+        android:scaleType="centerInside"
+        android:scaleX="3"
+        android:translationX="-100sp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="-105dp"
+        tools:layout_editor_absoluteY="-56dp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/mainmenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:background="?colorPrimary"
+        android:gravity="center"
+        android:text="@string/profile"
+        android:textColor="?background"
+        android:textSize="60sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp">
+
+    </androidx.appcompat.widget.AppCompatTextView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="188dp"
+        android:background="@color/bright_BG"
+        android:text="Ref Name: Eloi Alsina i Blanch"
+        android:textColor="?colorPrimary"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="260dp"
+        android:background="@color/bright_BG"
+        android:text="Mail: correuprova@gmail.com"
+        android:textColor="?colorPrimary"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

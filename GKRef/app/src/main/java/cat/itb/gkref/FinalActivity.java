@@ -10,9 +10,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-
-import cat.itb.gkref.MenuFragment;
-import cat.itb.gkref.R;
+import androidx.navigation.fragment.NavHostFragment;
 
 import static cat.itb.gkref.GameActivity.local_final_score4;
 import static cat.itb.gkref.GameActivity.local_parts_result4;
@@ -45,8 +43,8 @@ public class FinalActivity extends Fragment {
         end_match.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity(), MenuFragment.class);
-                startActivity(i);
+                NavHostFragment.findNavController(getParentFragment()).navigate(R.id.action_finalActivity_to_menu_history);
+
             }
         });
     return root;

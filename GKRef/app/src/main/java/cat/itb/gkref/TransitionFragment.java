@@ -10,6 +10,7 @@ import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -46,11 +47,11 @@ public class TransitionFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if(email==null) {
-                    Intent i = new Intent(getActivity(), LoginActivity.class);
-                    startActivity(i);
+                    NavHostFragment.findNavController(getParentFragment()).navigate(R.id.action_TransitionFragment_to_loginActivity);
+
                 }
                 else {
-                    Intent i = new Intent(getActivity(), MenuFragment.class);
+                    Intent i = new Intent(getActivity(), TeamsActivity.class);
                 startActivity(i);
                 }
             }
@@ -59,8 +60,7 @@ public class TransitionFragment extends Fragment {
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity(), MenuFragment.class);
-                startActivity(i);
+                NavHostFragment.findNavController(getParentFragment()).navigate(R.id.action_TransitionFragment_to_menu_history2);
             }
         });
 

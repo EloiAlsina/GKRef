@@ -9,6 +9,7 @@ import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 public class Part2 extends Fragment {
     private Button next;
@@ -23,8 +24,8 @@ public class Part2 extends Fragment {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity(), GameActivity.class);
-                startActivity(i);
+                NavHostFragment.findNavController(getParentFragment()).navigate(R.id.action_part2_to_game);
+
                 GameActivity.next2.setFocusable(false);
                 GameActivity.screen=1;
                 GameActivity.next3.bringToFront();

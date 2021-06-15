@@ -43,6 +43,7 @@
         android:layout_marginTop="28dp"
         android:layout_marginEnd="272dp"
         android:layout_marginRight="272dp"
+        android:background="@color/bright_BG"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/yc_local"
         tools:ignore="MissingConstraints" />
@@ -54,6 +55,7 @@
         android:layout_marginStart="12dp"
         android:layout_marginLeft="12dp"
         android:layout_marginTop="24dp"
+        android:background="@color/bright_BG"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.014"
@@ -85,6 +87,7 @@
         android:layout_marginStart="272dp"
         android:layout_marginLeft="272dp"
         android:layout_marginTop="28dp"
+        android:background="@color/bright_BG"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_view_visitor"
         tools:ignore="MissingConstraints" />
@@ -94,6 +97,7 @@
         android:layout_width="78dp"
         android:layout_height="35dp"
         android:layout_marginTop="28dp"
+        android:background="@color/bright_BG"
         app:layout_constraintEnd_toStartOf="@+id/visitor_rc"
         app:layout_constraintHorizontal_bias="0.964"
         app:layout_constraintStart_toStartOf="parent"
@@ -107,6 +111,7 @@
         android:layout_marginStart="272dp"
         android:layout_marginLeft="272dp"
         android:layout_marginTop="24dp"
+        android:background="@color/bright_BG"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rc_visitor"
         tools:ignore="MissingConstraints" />
@@ -352,6 +357,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="28dp"
+        android:background="@color/bright_BG"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.01"
         app:layout_constraintStart_toEndOf="@+id/local_yc"

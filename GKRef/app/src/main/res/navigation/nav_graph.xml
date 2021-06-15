@@ -19,47 +19,105 @@
         android:name="cat.itb.gkref.TransitionFragment"
         tools:layout="@layout/fragment_transition">
         <action
-            android:id="@+id/action_TransitionFragment_to_MenuFragment"
-            app:destination="@id/MenuFragment" />
-    </fragment>
-
-
-    <fragment
-        android:id="@+id/MenuFragment"
-        android:name="cat.itb.gkref.MenuFragment"
-        tools:layout="@layout/fragment_menu">
+            android:id="@+id/action_TransitionFragment_to_loginActivity"
+            app:destination="@id/loginActivity" />
         <action
-            android:id="@+id/action_MenuFragment_to_ActFramgent"
-            app:destination="@id/ActFramgent" />
+            android:id="@+id/action_TransitionFragment_to_menu_history2"
+            app:destination="@id/menu_history" />
     </fragment>
 
     <fragment
-        android:id="@+id/ActFramgent"
-        android:name="cat.itb.gkref.TransitionFragment"
-        tools:layout="@layout/fragment_transition">
+        android:id="@+id/menu_act"
+        android:name="cat.itb.gkref.ActActivity"
+        tools:layout="@layout/activity_act">
+        <action
+            android:id="@+id/action_ActFragment_to_TeamsFragment"
+            app:destination="@id/TeamsFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/part1"
         android:name="cat.itb.gkref.Part1"
-        tools:layout="@layout/fragment_transition">
+        tools:layout="@layout/part1">
+        <action
+            android:id="@+id/action_part1_to_game"
+            app:destination="@id/game" />
     </fragment>
 
     <fragment
         android:id="@+id/part2"
         android:name="cat.itb.gkref.Part2"
-        tools:layout="@layout/fragment_transition">
+        tools:layout="@layout/part2">
+        <action
+            android:id="@+id/action_part2_to_game"
+            app:destination="@id/game" />
     </fragment>
 
     <fragment
         android:id="@+id/part3"
         android:name="cat.itb.gkref.Part3"
-        tools:layout="@layout/fragment_transition">
+        tools:layout="@layout/part3">
+        <action
+            android:id="@+id/action_part3_to_game"
+            app:destination="@id/game" />
     </fragment>
 
     <fragment
         android:id="@+id/part4"
         android:name="cat.itb.gkref.Part4"
-        tools:layout="@layout/fragment_transition">
+        tools:layout="@layout/part4">
+        <action
+            android:id="@+id/action_part4_to_game"
+            app:destination="@id/game" />
     </fragment>
+
+    <fragment
+        android:id="@+id/TeamsFragment"
+        android:name="cat.itb.gkref.TeamsActivity"
+        tools:layout="@layout/activity_teams">
+        <action
+            android:id="@+id/action_TeamsFragment_to_parts"
+            app:destination="@id/part1" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/game"
+        android:name="cat.itb.gkref.GameActivity"
+        tools:layout="@layout/activity_game">
+        <action
+            android:id="@+id/action_game_to_finalActivity"
+            app:destination="@id/finalActivity" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/menu_profile"
+        android:name="cat.itb.gkref.FragmentRef"
+        tools:layout="@layout/fragment_profile">
+    </fragment>
+
+    <fragment
+        android:id="@+id/menu_history"
+        android:name="cat.itb.gkref.MenuFragment"
+        android:label="activity_menu"
+        tools:layout="@layout/activity_menu" />
+
+    <fragment
+        android:id="@+id/loginActivity"
+        android:name="cat.itb.gkref.Activities.LoginActivity"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginActivity_to_menu_history"
+            app:destination="@id/menu_history" />
+    </fragment>
+    <fragment
+        android:id="@+id/finalActivity"
+        android:name="cat.itb.gkref.FinalActivity"
+        android:label="FinalActivity" >
+        <action
+            android:id="@+id/action_finalActivity_to_menu_history"
+            app:destination="@id/menu_history" />
+    </fragment>
+
+
 </navigation>

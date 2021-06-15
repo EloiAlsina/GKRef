@@ -2,8 +2,10 @@ package cat.itb.gkref;
 
 import android.annotation.SuppressLint;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,13 +16,11 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.google.android.material.datepicker.MaterialDatePicker;
-
-import cat.itb.gkref.Activities.TeamsFragment;
-
 
 public class ActActivity extends Fragment {
 
@@ -31,7 +31,6 @@ public class ActActivity extends Fragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         View root = inflater.inflate(R.layout.activity_act, container, false);
 
         category = root.findViewById(R.id.category);
@@ -64,19 +63,9 @@ public class ActActivity extends Fragment {
 
         mPickDateButton.setOnClickListener(
                 new View.OnClickListener() {
-                    private FragmentManager supportFragmentManager;
-
-                    public void setSupportFragmentManager(FragmentManager supportFragmentManager) {
-                        this.supportFragmentManager = supportFragmentManager;
-                    }
-
-                    public FragmentManager getSupportFragmentManager() {
-                        return supportFragmentManager;
-                    }
-
                     @Override
                     public void onClick(View v) {
-                        materialDatePicker.show(getSupportFragmentManager(), "MATERIAL_DATE_PICKER");
+                        materialDatePicker.show(getParentFragmentManager(), "MATERIAL_DATE_PICKER");
                     }
                 });
 
@@ -92,13 +81,13 @@ public class ActActivity extends Fragment {
                     public void onClick(View v) {
                         popTimePicker(v);
                     }
-    });
+                });
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity(), TeamsFragment.class);
-                startActivity(i);
+                NavHostFragment.findNavController(getParentFragment()).navigate(R.id.action_ActFragment_to_TeamsFragment);
+
             }
         });
         return root;

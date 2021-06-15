@@ -1,14 +1,20 @@
 package cat.itb.gkref.Activities;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -17,28 +23,24 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-import cat.itb.gkref.MenuFragment;
 import cat.itb.gkref.R;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends Fragment {
     TextInputEditText email, password;
     FirebaseAuth firebaseAuth;
     MaterialButton login_button;
     public Button login, start, logout;
 
-    @SuppressLint({"WrongViewCast", "CutPasteId"})
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View root = inflater.inflate(R.layout.activity_login, container, false);
 
-        email = findViewById(R.id.email_editText);
-        password = findViewById(R.id.password_editText);
-        login_button = findViewById(R.id.login_button);
-        login=findViewById(R.id.login);
-        logout=findViewById(R.id.logout);
-        start=findViewById(R.id.start);
-
+        email = root.findViewById(R.id.email_editText);
+        password = root.findViewById(R.id.password_editText);
+        login_button = root.findViewById(R.id.login_button);
+        login=root.findViewById(R.id.login);
+        logout=root.findViewById(R.id.logout);
+        start=root.findViewById(R.id.start);
 
         autentification();
 
@@ -48,6 +50,7 @@ public class LoginActivity extends AppCompatActivity {
                 sigInUser();
             }
         });
+        return root;
     }
 
     private void autentification() {
@@ -63,19 +66,20 @@ public class LoginActivity extends AppCompatActivity {
                             .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                                 @Override
                                 public void onSuccess(AuthResult authResult) {
-                                    setContentView(R.layout.activity_menu);
+                                    NavHostFragment.findNavController(getParentFragment()).navigate(R.id.action_loginActivity_to_menu_history);
+
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(LoginActivity.this,"Wrong email or password",Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(LoginActivity.this,"Wrong email or password",Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
             }
-            else Toast.makeText(LoginActivity.this,"Please fill all the fields",Toast.LENGTH_SHORT).show();
+            //else Toast.makeText(LoginActivity.this,"Please fill all the fields",Toast.LENGTH_SHORT).show();
         }catch (Exception e){
-            Toast.makeText(this,e.getMessage(),Toast.LENGTH_LONG).show();
+            //Toast.makeText(this,e.getMessage(),Toast.LENGTH_LONG).show();
         }
     }
 }

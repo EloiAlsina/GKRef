@@ -16,8 +16,8 @@
         android:scaleX="3"
         android:translationX="-100sp"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="-87dp"
-        tools:layout_editor_absoluteY="-27dp" />
+        tools:layout_editor_absoluteX="-105dp"
+        tools:layout_editor_absoluteY="-56dp" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/mainmenu"
@@ -161,7 +161,7 @@
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="20dp"
         android:background="?colorPrimary"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout3"
         tools:context=".Activities.MainActivity"
@@ -282,15 +282,14 @@
         android:id="@+id/constraintLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="84dp"
+        android:layout_marginTop="20dp"
         android:background="?colorPrimary"
         app:layout_constraintBottom_toTopOf="@+id/bottom_nav"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.0"
         tools:context=".Activities.MainActivity"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp">
+        tools:ignore="MissingConstraints">
 
         <TextView
             android:id="@+id/result1"
@@ -401,18 +400,6 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_nav"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?colorOnPrimary"
-        app:backgroundTint="?colorPrimary"
-        app:itemIconTint="@color/higlight"
-        app:itemTextColor="@color/bright_BG"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_navigation_menu" />
 
 
 

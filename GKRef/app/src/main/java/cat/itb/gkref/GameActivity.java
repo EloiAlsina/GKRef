@@ -6,20 +6,35 @@ import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
+
+import cat.itb.gkref.Activities.MainActivity;
 
 import static android.view.View.GONE;
 
 public class GameActivity extends Fragment {
+    FirebaseFirestore players_rootRef = FirebaseFirestore.getInstance();
 
-    private static final long START_TIME_IN_MILLIS = 720000;
+    private static final long START_TIME_IN_MILLIS = 72;
     private static final long TOLOCAL_START_TIME_IN_MILLIS = 60000;
     private static final long TOVISITOR_START_TIME_IN_MILLIS = 60000;
     private static final long LOCAL2M_START_TIME_IN_MILLIS = 120000;
@@ -46,6 +61,9 @@ public class GameActivity extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.activity_game, container, false);
+        MainActivity parentActivity = (MainActivity) getActivity();
+        assert parentActivity != null;
+        parentActivity.setVisibilityBottomNavView(GONE);
 
         local_2m_timer1=root.findViewById(R.id.local_2m_timer1);
         local_2m_timer2=root.findViewById(R.id.local_2m_timer2);
@@ -92,6 +110,137 @@ public class GameActivity extends Fragment {
         next4.setVisibility(View.INVISIBLE);
         end_match.setVisibility(View.INVISIBLE);
 
+        //-------------------------------------------------------------------------------------------
+        List<String> local_yc_string = new ArrayList<>();
+
+        CollectionReference local_playersRef = players_rootRef.collection("teams").document("FCB").collection("Players");
+        Spinner yc_local = (Spinner) root.findViewById(R.id.yc_local);
+        ArrayAdapter<String> local_yc_adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, local_yc_string);
+        local_yc_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        yc_local.setAdapter(local_yc_adapter);
+        local_playersRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        String name = document.getString("Name");
+                        local_yc_string.add(name);
+                    }
+                    local_yc_adapter.notifyDataSetChanged();
+                }
+            }
+        });
+
+        //-------------------------------------------------------------------------------------------
+        List<String> visitor_yc_string = new ArrayList<>();
+
+        CollectionReference visitor_playersRef = players_rootRef.collection("teams").document("CHSEP").collection("Players");
+        Spinner yc_visitor = (Spinner) root.findViewById(R.id.yc_visitor);
+        ArrayAdapter<String> visitor_yc_adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, visitor_yc_string);
+        visitor_yc_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        yc_visitor.setAdapter(visitor_yc_adapter);
+        visitor_playersRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        String name = document.getString("Name");
+                        visitor_yc_string.add(name);
+                    }
+                    visitor_yc_adapter.notifyDataSetChanged();
+                }
+            }
+        });
+
+        //-------------------------------------------------------------------------------------------
+        List<String> local_rc_string = new ArrayList<>();
+
+        local_playersRef = players_rootRef.collection("teams").document("FCB").collection("Players");
+        Spinner rc_local = (Spinner) root.findViewById(R.id.rc_local);
+        ArrayAdapter<String> local_rc_adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, local_rc_string);
+        local_rc_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        rc_local.setAdapter(local_rc_adapter);
+        local_playersRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        String name = document.getString("Name");
+                        local_rc_string.add(name);
+                    }
+                    local_rc_adapter.notifyDataSetChanged();
+                }
+            }
+        });
+
+        //-------------------------------------------------------------------------------------------
+        List<String> visitor_rc_string = new ArrayList<>();
+
+        visitor_playersRef = players_rootRef.collection("teams").document("CHSEP").collection("Players");
+        Spinner rc_visitor = (Spinner) root.findViewById(R.id.rc_visitor);
+        ArrayAdapter<String> visitor_rc_adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, visitor_rc_string);
+        visitor_rc_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        rc_visitor.setAdapter(visitor_rc_adapter);
+        visitor_playersRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        String name = document.getString("Name");
+                        visitor_rc_string.add(name);
+                    }
+                    visitor_rc_adapter.notifyDataSetChanged();
+                }
+            }
+        });
+
+        //-------------------------------------------------------------------------------------------
+        List<String> local_2m_string = new ArrayList<>();
+
+        local_playersRef = players_rootRef.collection("teams").document("FCB").collection("Players");
+        Spinner local_2m = (Spinner) root.findViewById(R.id.local_2m);
+        ArrayAdapter<String> local_2m_adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, local_2m_string);
+        local_2m_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        local_2m.setAdapter(local_2m_adapter);
+        local_playersRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        String name = document.getString("Name");
+                        local_2m_string.add(name);
+                    }
+                    local_2m_adapter.notifyDataSetChanged();
+                }
+            }
+        });
+
+        //-------------------------------------------------------------------------------------------
+        List<String> visitor_2m_string = new ArrayList<>();
+
+        visitor_playersRef = players_rootRef.collection("teams").document("CHSEP").collection("Players");
+        Spinner visitor_2m = (Spinner) root.findViewById(R.id.visitor_2m);
+        ArrayAdapter<String> visitor_2m_adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, visitor_2m_string);
+        visitor_2m_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        visitor_2m.setAdapter(visitor_2m_adapter);
+        visitor_playersRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        String name = document.getString("Name");
+                        visitor_2m_string.add(name);
+                    }
+                    visitor_2m_adapter.notifyDataSetChanged();
+                }
+            }
+        });
 
         local_yc.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,8 +273,8 @@ public class GameActivity extends Fragment {
         next2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity(), Part2.class);
-                startActivity(i);
+                NavHostFragment.findNavController(getParentFragment()).navigate(R.id.action_game_to_finalActivity);
+
                 next3.bringToFront();
                 next2.setVisibility(GONE);
                 local_final_score=local_goals;
@@ -319,6 +468,7 @@ public class GameActivity extends Fragment {
         exclusion_local.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
+               Toast.makeText(getActivity(), "2min to local player", Toast.LENGTH_SHORT).show();
                if (Local2mTimerRunning) {
                    local_2m_timer2.setVisibility(View.VISIBLE);
                    Local2mStartTimer2();
@@ -329,10 +479,10 @@ public class GameActivity extends Fragment {
            }
        });
 
-
     exclusion_visitor.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            Toast.makeText(getActivity(), "2min to visitor player", Toast.LENGTH_SHORT).show();
             if (Visitor2mTimerRunning) {
                 visitor_2m_timer2.setVisibility(View.VISIBLE);
                 Visitor2mStartTimer2();

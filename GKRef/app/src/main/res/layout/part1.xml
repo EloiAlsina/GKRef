@@ -32,40 +32,33 @@
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="114dp" />
 
-    <TextView
-        android:id="@+id/local_players"
-        android:ellipsize="end"
-        android:maxLines="10"
-        android:singleLine="false"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textColor="?colorPrimary"
-        android:textSize="18sp"
+
+    <Spinner
+        android:id="@+id/part_local_players"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="344dp"
+        android:background="@color/bright_BG"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.306"
+        app:layout_constraintHorizontal_bias="0.169"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/part1"
+        app:layout_constraintVertical_bias="0.382"
         tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:id="@+id/visitor_players"
-        android:ellipsize="end"
-        android:maxLines="10"
-        android:singleLine="false"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="48dp"
-        android:textColor="?colorPrimary"
-        android:textSize="18sp"
+    <Spinner
+        android:id="@+id/part_visitor_players"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="492dp"
+        android:background="@color/bright_BG"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.756"
+        app:layout_constraintHorizontal_bias="0.897"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.464"
+        app:layout_constraintTop_toBottomOf="@+id/part1"
+        app:layout_constraintVertical_bias="0.978"
         tools:ignore="MissingConstraints" />
 
     <com.google.android.material.button.MaterialButton

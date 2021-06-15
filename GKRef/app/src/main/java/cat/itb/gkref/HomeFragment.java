@@ -2,6 +2,7 @@ package cat.itb.gkref;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.renderscript.ScriptGroup;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,7 +32,6 @@ public class HomeFragment extends Fragment {
                 MainActivity parentActivity = (MainActivity) getActivity();
                 assert parentActivity != null;
                 NavHostFragment.findNavController(getParentFragment()).navigate(R.id.action_HomeFragment_to_TransitionFragment);
-                parentActivity.setVisibilityBottomNavView(View.VISIBLE);
             }
         });
         return root;
